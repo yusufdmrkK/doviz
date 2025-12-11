@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Döviz Kuru Takip</title>
+    <style>
+        body { font-family: sans-serif; margin: 40px; }
+        h1 { color: #333; }
+        .rate-container { margin-top: 20px; border: 1px solid #ccc; padding: 15px; border-radius: 5px; }
+        .rate-item { margin-bottom: 10px; font-size: 1.1em; }
+        .currency { font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Gerçek Zamanlı Döviz Kurları (Baz: {{ base_currency }})</h1>
+    <p>Veri kaynağı: Harici Döviz Kuru API'si</p>
+
+    <div class="rate-container">
+        {% for currency, rate in rates.items() %}
+            <div class="rate-item">
+                <span class="currency">{{ currency }}:</span> 
+                {{ rate }} (1 {{ base_currency }} = {{ rate }} {{ currency }})
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
